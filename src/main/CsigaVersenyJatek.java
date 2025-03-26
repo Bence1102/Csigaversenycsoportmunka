@@ -39,6 +39,10 @@ public class CsigaVersenyJatek {
         this.kor = kor;
     }
     
+    public void verseny(){
+        
+    }
+    
     public static void main(String[] args) {
         
     }
