@@ -21,34 +21,30 @@ public class CsigaVersenyJatek {
         }
     }
 
-    public void eredmeny() {
-        int maxTavolsag = megy[0];
-        Csiga nyertes = csigak[0];
+   public void eredmeny() {
+    int maxTavolsag = megy[0];
+    Csiga nyertes = csigak[0];
 
-        int maxLength = 0;
-        for (int i = 0; i < csigak.length; i++) {
-            int length = csigak[i].getSzin().length() + csigak[i].getSzinKod().length() + 6; // A "csiga" szó + egyéb karakterek
-            if (length > maxLength) {
-                maxLength = length;
-            }
+    
+
+    for (int i = 0; i < csigak.length; i++) {
+        String lep = "";
+        for (int a = 0; a < megy[i]; a++) {
+            lep += "-";
         }
 
-        for (int i = 0; i < csigak.length; i++) {
-            String lep = "";
-            for (int a = 0; a < megy[i]; a++) {
-                lep += "-";
-            }
+        
+        System.out.printf("\n" +csigak[i].getSzinKod() + csigak[i].getSzin() + " csiga " + "\n" + lep);
 
-            System.out.printf("%-" + maxLength + "s %s\n", csigak[i].getSzinKod() + csigak[i].getSzin() + "csiga", lep);
-
-            if (megy[i] > maxTavolsag) {
-                maxTavolsag = megy[i];
-                nyertes = csigak[i];
-            }
+        if (megy[i] > maxTavolsag) {
+            maxTavolsag = megy[i];
+            nyertes = csigak[i];
         }
-
-        System.out.println("A győztes csiga: " + nyertes.getSzinKod() + nyertes.getSzin());
     }
+
+    System.out.println("\n A győztes csiga: " + nyertes.getSzinKod() + nyertes.getSzin());
+}
+
 
     public Csiga[] getCsigak() {
         return csigak;
