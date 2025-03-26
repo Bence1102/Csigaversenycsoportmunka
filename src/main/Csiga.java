@@ -19,4 +19,12 @@ public class Csiga {
      }
      
      
+     
+     
+     public int megy(){
+         if(Math.random()<0.2){
+             gyorsitas=true;
+         }
+         return gyorsitas ? 2:1;
+     }
 }
