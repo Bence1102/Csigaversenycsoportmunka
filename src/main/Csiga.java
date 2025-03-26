@@ -14,12 +14,7 @@ public class Csiga {
         this.abra = abra;
     }
 
-    public int megy() {
-        if (Math.random() < 0.2) {
-            gyorsitas = true;
-        }
-        return gyorsitas ? 2 : 1;
-    }
+    
 
     public String getSzin() {
         return szin;
@@ -52,5 +47,10 @@ public class Csiga {
     public void setAbra(String abra) {
         this.abra = abra;
     }
-
+    public int megy() {
+        if (Math.random() < 0.2) {
+            gyorsitas = true;
+        }
+        return gyorsitas ? 2 : 1;
+    }
 }
