@@ -13,6 +13,19 @@ public class CsigaVersenyJatek {
         this.kor=kor;
         this.megy=new int[csigak.length];
     }
+    
+    public void verseny(){
+        for (int i=0; i < kor; i++){
+            for(int a = 0; a < csigak.length; a++){
+                int megtettUt= csigak[a].gyorsito();
+                megy[a]+=megtettUt;
+            } 
+        }
+    }
+    
+    
+    
+    
      public Csiga[] getCsigak() {
         return csigak;
     }
@@ -37,10 +50,6 @@ public class CsigaVersenyJatek {
     
     public void setKor(int kor) {
         this.kor = kor;
-    }
-    
-    public void verseny(){
-        
     }
     
     public static void main(String[] args) {
