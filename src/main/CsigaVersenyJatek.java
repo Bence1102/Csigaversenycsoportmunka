@@ -25,14 +25,21 @@ public class CsigaVersenyJatek {
         int maxTavolsag = megy[0];
         Csiga nyertes = csigak[0];
 
+        int maxLength = 0;
+        for (int i = 0; i < csigak.length; i++) {
+            int length = csigak[i].getSzin().length() + csigak[i].getSzinKod().length() + 6; // A "csiga" szó + egyéb karakterek
+            if (length > maxLength) {
+                maxLength = length;
+            }
+        }
+
         for (int i = 0; i < csigak.length; i++) {
             String lep = "";
-
             for (int a = 0; a < megy[i]; a++) {
                 lep += "-";
             }
 
-            System.out.println(csigak[i].getSzinKod() + csigak[i].getSzin() + " csiga " + lep);
+            System.out.printf("%-" + maxLength + "s %s\n", csigak[i].getSzinKod() + csigak[i].getSzin() + "csiga", lep);
 
             if (megy[i] > maxTavolsag) {
                 maxTavolsag = megy[i];
