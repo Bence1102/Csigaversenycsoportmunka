@@ -32,7 +32,7 @@ public class CsigaVersenyJatek {
                 lep += "-";
             }
 
-            System.out.println("\n" + csigak[i].getSzinKod() + csigak[i].getSzin() + " csiga " + "\n" + lep);
+            System.out.println("\n" + csigak[i].getSzinKod() + csigak[i].getSzin() + " csiga " + "\n" + lep );
 
             if (megy[i] > maxTavolsag) {
                 maxTavolsag = megy[i];
