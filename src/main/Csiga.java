@@ -50,7 +50,9 @@ public class Csiga {
     public int gyosito() {
         if (Math.random() < 0.2) {
             gyorsitas = true;
+        }else {
+            gyorsitas = false;
         }
-        return gyorsitas ? 2 : 1;
+    return gyorsitas ? 2 : 1;
     }
 }
