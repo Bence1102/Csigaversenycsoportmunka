@@ -47,7 +47,7 @@ public class Csiga {
     public void setAbra(String abra) {
         this.abra = abra;
     }
-    public int gyosito() {
+    public int gyorsito() {
         if (Math.random() < 0.2) {
             gyorsitas = true;
         }else {

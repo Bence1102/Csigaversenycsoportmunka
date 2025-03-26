@@ -24,7 +24,27 @@ public class CsigaVersenyJatek {
     }
     
     
-    
+    public void eredmeny(){
+        int maxTavolsag = megy[0];
+        Csiga nyertes= csigak[0];
+        
+        for (int i = 0; i < csigak.length; i++) {
+            String lep = "";
+            for (int b = 0; b < csigak.length; b++){
+                lep += "-";
+            }
+            System.out.println(csigak[i].getSzinKod() + csigak[i].getSzin() + "csiga" + lep);
+            
+            
+            if ( megy[i]>maxTavolsag){
+                maxTavolsag = megy[i];
+                nyertes = csigak[i];
+            }
+        }
+        
+        System.out.println("\na győztes csiga:" + nyertes.getSzinKod()+nyertes.getSzin());
+        
+    }
     
      public Csiga[] getCsigak() {
         return csigak;
@@ -50,10 +70,6 @@ public class CsigaVersenyJatek {
     
     public void setKor(int kor) {
         this.kor = kor;
-    }
-    
-    public static void main(String[] args) {
-        
     }
     
 }
