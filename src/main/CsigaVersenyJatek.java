@@ -14,9 +14,12 @@ public class CsigaVersenyJatek {
     
     public void verseny() {
         for (int i = 0; i < kor; i++) {
-            int gyorsitottCsigaIndex = (int) (Math.random() * csigak.length);
+
+            int gyorsitottCsiga = (int) (Math.random() * csigak.length);
+
+
             for (int a = 0; a < csigak.length; a++) {
-                int megtettUt = (a == gyorsitottCsigaIndex) ? csigak[a].gyorsito() : csigak[a].lepes();
+                int megtettUt = (a == gyorsitottCsiga) ? csigak[a].gyorsito() : csigak[a].lepes();
                 megy[a] += megtettUt;
 
                

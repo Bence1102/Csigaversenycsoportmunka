@@ -4,7 +4,7 @@ public class Csiga {
 
     private String szin;
     private String abra;
-    
+    private int lepes;
     private String szinKod;
 
     public Csiga(String szin, String szinKod, String abra) {
