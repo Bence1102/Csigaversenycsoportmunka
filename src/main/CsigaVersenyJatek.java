@@ -20,7 +20,7 @@ public class CsigaVersenyJatek {
 
     public void tippel() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Melyik csigára tippelsz a versenyen? (1 - Kék, 2 - Piros, 3 - Zöld)");
+        System.out.println("Melyik csigára tippelsz a versenyen? (1 - Kék, 2 - Piros, 3 - Zöld): ");
 
         int tipp = scanner.nextInt();
 
@@ -116,7 +116,7 @@ public class CsigaVersenyJatek {
         jatek.tippel();
         jatek.verseny();
         jatek.eredmeny();
-        System.out.println("alma");
+       
     }
 
 }
