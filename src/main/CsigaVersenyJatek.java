@@ -11,14 +11,30 @@ public class CsigaVersenyJatek {
         this.kor = kor;
         this.megy = new int[csigak.length];
     }
-    
+
     public void verseny() {
         for (int i = 0; i < kor; i++) {
             int gyorsitottCsiga = (int) (Math.random() * csigak.length);
+            boolean gyorsitott = Math.random() < 0.2; 
 
             for (int a = 0; a < csigak.length; a++) {
-                int megtettUt = (a == gyorsitottCsiga) ? csigak[a].gyorsito() : csigak[a].lepes();
-                megy[a] += megtettUt;
+                int megtettUt;
+                String lep = ""; 
+                if (gyorsitott && a == gyorsitottCsiga) {
+                    megtettUt = 2; 
+                    
+                    for (int j = 0; j < megtettUt; j++) {
+                        lep += "=";
+                    }
+                } else {
+                    megtettUt = 1; 
+                   
+                    lep += "-";
+                }
+                megy[a] += megtettUt; 
+
+                
+                System.out.printf("\n" + csigak[a].getSzinKod() + csigak[a].getSzin() + " csiga " + csigak[a].getSzinKod() + lep + csigak[a].getAbra() + "\u001B[0m");
             }
         }
     }
@@ -43,7 +59,6 @@ public class CsigaVersenyJatek {
 
         System.out.println("\n A győztes csiga: " + nyertes.getSzinKod() + nyertes.getSzin() + " " + nyertes.getAbra());
     }
-
 
     public Csiga[] getCsigak() {
         return csigak;
