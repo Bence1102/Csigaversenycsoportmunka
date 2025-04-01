@@ -4,13 +4,14 @@ public class Csiga {
 
     private String szin;
     private String abra;
-    
+    private int lepes;
     private String szinKod;
 
     public Csiga(String szin, String szinKod, String abra) {
         this.szin = szin;
         this.szinKod = szinKod;
         this.abra = abra;
+        this.lepes = 1;
     }
 
     
@@ -37,6 +38,14 @@ public class Csiga {
 
     public void setAbra(String abra) {
         this.abra = abra;
+    }
+    
+    public int getLepes() {
+        return lepes;
+    }
+
+    public void setLepes(int lepes) {
+        this.lepes = lepes;
     }
      public int lepes() {
         return 1; 

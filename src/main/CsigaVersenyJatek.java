@@ -1,10 +1,16 @@
 package main;
 
+
+
+import java.util.Scanner;
+
+
 public class CsigaVersenyJatek {
 
     private Csiga[] csigak;
     private int[] megy;
     private int kor;
+    private Csiga tippeltCsiga;
 
     public CsigaVersenyJatek(Csiga[] csigak, int kor) {
         this.csigak = csigak;
@@ -12,29 +18,39 @@ public class CsigaVersenyJatek {
         this.megy = new int[csigak.length];
     }
 
+    public void tippel() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Melyik csigára tippelsz a versenyen? (1 - Kék, 2 - Piros, 3 - Zöld)");
+
+        int tipp = scanner.nextInt();
+
+        if (tipp == 1) {
+            tippeltCsiga = csigak[0];
+        } else if (tipp == 2) {
+            tippeltCsiga = csigak[1];
+        } else if (tipp == 3) {
+            tippeltCsiga = csigak[2];
+        } else {
+            System.out.println("Érvénytelen tipp!");
+            tippel();  
+        }
+
+        System.out.println("Te a " + tippeltCsiga.getSzin() + " csigára tippeltél!");
+    }
+    
+    
+    
     public void verseny() {
         for (int i = 0; i < kor; i++) {
+
             int gyorsitottCsiga = (int) (Math.random() * csigak.length);
-            boolean gyorsitott = Math.random() < 0.2; 
+            
 
             for (int a = 0; a < csigak.length; a++) {
-                int megtettUt;
-                String lep = ""; 
-                if (gyorsitott && a == gyorsitottCsiga) {
-                    megtettUt = 2; 
-                    
-                    for (int j = 0; j < megtettUt; j++) {
-                        lep += "=";
-                    }
-                } else {
-                    megtettUt = 1; 
-                   
-                    lep += "-";
-                }
+                    int megtettUt = (a == gyorsitottCsiga) ? csigak[a].gyorsito() : csigak[a].getLepes();
+            
                 megy[a] += megtettUt; 
-
                 
-                System.out.printf("\n" + csigak[a].getSzinKod() + csigak[a].getSzin() + " csiga " + csigak[a].getSzinKod() + lep + csigak[a].getAbra() + "\u001B[0m");
             }
         }
     }
@@ -58,6 +74,12 @@ public class CsigaVersenyJatek {
         }
 
         System.out.println("\n A győztes csiga: " + nyertes.getSzinKod() + nyertes.getSzin() + " " + nyertes.getAbra());
+        
+        if (nyertes == tippeltCsiga) {
+            System.out.println("Gratulálok! Helyesen tippeltél, a " + nyertes.getSzin() + " csiga nyert!");
+        } else {
+            System.out.println("Sajnálom! Nem nyert a tippelt csigád.");
+        }
     }
 
     public Csiga[] getCsigak() {
@@ -91,6 +113,7 @@ public class CsigaVersenyJatek {
 
         Csiga[] csigak1 = {kek, piros, zold};
         CsigaVersenyJatek jatek = new CsigaVersenyJatek(csigak1, 10);
+        jatek.tippel();
         jatek.verseny();
         jatek.eredmeny();
 
