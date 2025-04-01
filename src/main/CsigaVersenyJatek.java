@@ -83,7 +83,7 @@ public class CsigaVersenyJatek {
         CsigaVersenyJatek jatek = new CsigaVersenyJatek(csigak1, 10);
         jatek.verseny();
         jatek.eredmeny();
-
+        System.out.println("alma");
     }
 
 }
