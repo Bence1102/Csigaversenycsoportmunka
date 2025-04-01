@@ -14,52 +14,51 @@ public class CsigaVersenyJatek {
 
     public void verseny() {
         for (int i = 0; i < kor; i++) {
+            int gyorsitottCsigaIndex = (int) (Math.random() * csigak.length);
+            boolean gyorsitott = Math.random() < 0.2;
+
             for (int a = 0; a < csigak.length; a++) {
-                int megtettUt = csigak[a].gyorsito();
+                int megtettUt;
+                String lep = "";
+                if (gyorsitott && a == gyorsitottCsigaIndex) {
+                    megtettUt = 2;
+                   
+                    for (int j = 0; j < megtettUt; j++) {
+                        lep += "=";
+                    }
+                } else {
+                    megtettUt = 1;
+                   
+                    lep += "-";
+                }
                 megy[a] += megtettUt;
+
+               
+                System.out.printf("\n" + csigak[a].getSzinKod() + csigak[a].getSzin() + " csiga " + csigak[a].getSzinKod() + lep + csigak[a].getAbra() + "\u001B[0m");
             }
         }
     }
 
-   public void eredmeny() {
-    int maxTavolsag = megy[0];
-    Csiga nyertes = csigak[0];
+    public void eredmeny() {
+        int maxTavolsag = megy[0];
+        Csiga nyertes = csigak[0];
 
-<<<<<<< HEAD
-        
-=======
-    
+        for (int i = 0; i < csigak.length; i++) {
+            String lep = "";
+            for (int a = 0; a < megy[i]; a++) {
+                lep += (a % 2 == 0) ? "-" : "=";
+            }
 
-    for (int i = 0; i < csigak.length; i++) {
-        String lep = "";
-        for (int a = 0; a < megy[i]; a++) {
-            lep += "-";
-        }
->>>>>>> 67c6f67a5b15e730f5901dfca440ad2a0dc76d64
-
-        
-        System.out.printf("\n" +csigak[i].getSzinKod() + csigak[i].getSzin() + " csiga " + "\n" + lep);
-
-<<<<<<< HEAD
-
-            System.out.println("\n" + csigak[i].getSzinKod() + csigak[i].getSzin() + " csiga " + "\n" + lep );
-
+            System.out.printf("\n" + csigak[i].getSzinKod() + csigak[i].getSzin() + " csiga " + "\n" + lep + csigak[i].getAbra());
 
             if (megy[i] > maxTavolsag) {
                 maxTavolsag = megy[i];
                 nyertes = csigak[i];
             }
-=======
-        if (megy[i] > maxTavolsag) {
-            maxTavolsag = megy[i];
-            nyertes = csigak[i];
->>>>>>> 67c6f67a5b15e730f5901dfca440ad2a0dc76d64
         }
+
+        System.out.println("\n A győztes csiga: " + nyertes.getSzinKod() + nyertes.getSzin() + " " + nyertes.getAbra());
     }
-
-    System.out.println("\n A győztes csiga: " + nyertes.getSzinKod() + nyertes.getSzin());
-}
-
 
     public Csiga[] getCsigak() {
         return csigak;
@@ -86,7 +85,7 @@ public class CsigaVersenyJatek {
     }
 
     public static void main(String[] args) {
-        Csiga kek = new Csiga("kék", "\u001B[34m", "🐌");
+        Csiga kek = new Csiga("Kék", "\u001B[34m", "🐌");
         Csiga piros = new Csiga("Piros", "\u001B[31m", "🐌");
         Csiga zold = new Csiga("Zöld", "\u001B[32m", "🐌");
 
