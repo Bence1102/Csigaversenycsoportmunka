@@ -11,39 +11,38 @@ public class CsigaVersenyJatek {
         this.kor = kor;
         this.megy = new int[csigak.length];
     }
-
+    
     public void verseny() {
         for (int i = 0; i < kor; i++) {
+            int gyorsitottCsigaIndex = (int) (Math.random() * csigak.length);
+
             for (int a = 0; a < csigak.length; a++) {
-                int megtettUt = csigak[a].gyorsito();
+                int megtettUt = (a == gyorsitottCsigaIndex) ? csigak[a].gyorsito() : csigak[a].lepes();
                 megy[a] += megtettUt;
             }
         }
     }
 
-   public void eredmeny() {
-    int maxTavolsag = megy[0];
-    Csiga nyertes = csigak[0];
+    public void eredmeny() {
+        int maxTavolsag = megy[0];
+        Csiga nyertes = csigak[0];
 
-    
+        for (int i = 0; i < csigak.length; i++) {
+            String lep = "";
+            for (int a = 0; a < megy[i]; a++) {
+                lep += (a % 2 == 0) ? "-" : "=";
+            }
 
-    for (int i = 0; i < csigak.length; i++) {
-        String lep = "";
-        for (int a = 0; a < megy[i]; a++) {
-            lep += "-";
+            System.out.printf("\n" + csigak[i].getSzinKod() + csigak[i].getSzin() + " csiga " + "\n" + lep + csigak[i].getAbra());
+
+            if (megy[i] > maxTavolsag) {
+                maxTavolsag = megy[i];
+                nyertes = csigak[i];
+            }
         }
 
-        
-        System.out.printf("\n" +csigak[i].getSzinKod() + csigak[i].getSzin() + " csiga " + "\n" + lep);
-
-        if (megy[i] > maxTavolsag) {
-            maxTavolsag = megy[i];
-            nyertes = csigak[i];
-        }
+        System.out.println("\n A győztes csiga: " + nyertes.getSzinKod() + nyertes.getSzin() + " " + nyertes.getAbra());
     }
-
-    System.out.println("\n A győztes csiga: " + nyertes.getSzinKod() + nyertes.getSzin());
-}
 
 
     public Csiga[] getCsigak() {
@@ -71,7 +70,7 @@ public class CsigaVersenyJatek {
     }
 
     public static void main(String[] args) {
-        Csiga kek = new Csiga("kék", "\u001B[34m", "🐌");
+        Csiga kek = new Csiga("Kék", "\u001B[34m", "🐌");
         Csiga piros = new Csiga("Piros", "\u001B[31m", "🐌");
         Csiga zold = new Csiga("Zöld", "\u001B[32m", "🐌");
 

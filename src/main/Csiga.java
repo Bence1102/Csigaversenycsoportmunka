@@ -4,13 +4,12 @@ public class Csiga {
 
     private String szin;
     private String abra;
-    private boolean gyorsitas;
+    
     private String szinKod;
 
     public Csiga(String szin, String szinKod, String abra) {
         this.szin = szin;
         this.szinKod = szinKod;
-        this.gyorsitas = false;
         this.abra = abra;
     }
 
@@ -32,14 +31,6 @@ public class Csiga {
         this.szinKod = szinKod;
     }
 
-    public boolean getGyorsitas() {
-        return gyorsitas;
-    }
-
-    public void setGyorsitas(boolean gyorsitas) {
-        this.gyorsitas = gyorsitas;
-    }
-
     public String getAbra() {
         return abra;
     }
@@ -47,12 +38,11 @@ public class Csiga {
     public void setAbra(String abra) {
         this.abra = abra;
     }
+     public int lepes() {
+        return 1; 
+    }
+
     public int gyorsito() {
-        if (Math.random() < 0.2) {
-            gyorsitas = true;
-        }else {
-            gyorsitas = false;
-        }
-    return gyorsitas ? 2 : 1;
+        return Math.random() < 0.2 ? 2 : 1; 
     }
 }
